@@ -46,11 +46,9 @@ python train.py --config configs/example_kailuan_fusion.yaml \
 The dataset expects one row per subject/sample and requires:
 
 - CFP path columns:
-  - `OP_L_macular`, `OP_R_macular` for `cfp_type: macular`
-  - `OPT_L_optic_disc`, `OPT_R_optic_disc` for `cfp_type: optic_disc`
+  - `OP_L`, `OP_R`
 - morphology feature columns with matching left/right prefixes:
-  - `OP_L_macular_*`, `OP_R_macular_*`, or
-  - `OPT_L_optic_disc_*`, `OPT_R_optic_disc_*`
+  - `OP_L_optic_disc_*`, `OP_R_optic_disc_*`
 - target column, for example `WMH_log1p`
 - metadata columns listed in `data.metainfo_map`
 
@@ -105,10 +103,10 @@ To make the dataset more interpretable and reproducible, we provide a visualized
 ### Bilateral fundus images
 
 Left eye (CFP):
-![Left Eye](retibrain_fusion/Data_demo/ID5_L.jpg)
+![Left Eye](Data_demo/ID5_L.jpg)
 
 Right eye (CFP):
-![Right Eye](retibrain_fusion/Data_demo/ID5_R.jpg)
+![Right Eye](Data_demo/ID5_R.jpg)
 
 ### Notes
 - Images correspond to paired CFP inputs used for fusion modeling.
