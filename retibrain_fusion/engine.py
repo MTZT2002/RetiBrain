@@ -236,14 +236,12 @@ def train_fold(
             best_val_loss = val_loss
             best_loss_epoch = epoch
             torch.save(model.state_dict(), output_dir / "fusion_best_loss.pth")
-            torch.save(model.meta_net.state_dict(), output_dir / "meta_best_loss.pth")
             save_epoch_predictions(val_buffers, output_dir / "val_predictions_best_loss.csv")
 
         if val_metrics["pearson_r"] > best_pearson:
             best_pearson = val_metrics["pearson_r"]
             best_pearson_epoch = epoch
             torch.save(model.state_dict(), output_dir / "fusion_best_pearson.pth")
-            torch.save(model.meta_net.state_dict(), output_dir / "meta_best_pearson.pth")
             save_epoch_predictions(val_buffers, output_dir / "val_predictions_best_pearson.csv")
 
         if checkpoint_every > 0 and epoch % checkpoint_every == 0:

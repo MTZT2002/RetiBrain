@@ -113,8 +113,6 @@ For each fold, the training script saves:
 
 - `train.csv` and `val.csv`
 - `epoch_metrics.csv`
-- `fusion_best_loss.pth`, `fusion_best_pearson.pth`
-- `meta_best_loss.pth`, `meta_best_pearson.pth`
 - validation prediction CSVs for the best checkpoints
 - optional SVG diagnostic plots under `vis/`
 
