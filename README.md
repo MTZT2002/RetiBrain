@@ -102,11 +102,29 @@ To make the dataset more interpretable and reproducible, we provide a visualized
 
 ### Bilateral fundus images
 
-Left eye (CFP):
-![Left Eye](Data_demo/ID5_L.jpg)
+[//]: # (Left eye &#40;CFP&#41;:)
 
-Right eye (CFP):
-![Right Eye](Data_demo/ID5_R.jpg)
+[//]: # (![Left Eye]&#40;Data_demo/ID5_L.jpg&#41;)
+
+[//]: # ()
+[//]: # (Right eye &#40;CFP&#41;:)
+
+[//]: # (![Right Eye]&#40;Data_demo/ID5_R.jpg&#41;)
+
+### Bilateral fundus images
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Left eye (CFP)</b><br>
+      <img src="Data_demo/ID5_L.jpg" width="320">
+    </td>
+    <td align="center">
+      <b>Right eye (CFP)</b><br>
+      <img src="Data_demo/ID5_R.jpg" width="320">
+    </td>
+  </tr>
+</table>
 
 ### Notes
 - Images correspond to paired CFP inputs used for fusion modeling.
