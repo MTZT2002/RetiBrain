@@ -1,0 +1,9 @@
+[project]
+name = "retibrain"
+version = "0.1.0"
+description = "Training code for CFP, retinal morphology and metadata fusion regression."
+requires-python = ">=3.9"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+include = ["retibrain_fusion*"]

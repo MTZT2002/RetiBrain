@@ -1,0 +1,69 @@
+experiment:
+  name: kailuan_wmh_fusion
+  output_dir: ./outputs
+  seed: 42
+  device: auto               # auto, cpu, cuda, cuda:0, ...
+  cuda_visible_devices: null # e.g. "0"; prefer CLI/device management on shared servers
+
+data:
+  csv_path: /path/to/kailuan_cfp_flair_t1_with_WMH_final_with_morph.csv
+  data_source: Kailuan
+  target: WMH_log1p
+  metainfo: part1+part2+part4
+  cfp_type: optic_disc       # macular or optic_disc
+  image_size: [512, 512]
+  label_transform: log1p     # log1p or none
+
+  # Optional path rewriting for moving data between machines.
+  # Example: replace old NAS prefix with the current mount point.
+  path_replacements:
+    /data4/: /data4/data4_copy/
+
+  metainfo_map:
+    part1: [AGE, gender]
+    part2: [dbp_21raw, sbp_21raw, drinkcar, smokecar, phycar, BMI18, wc_18, hc_18]
+    part3: [tc_18all, tg_18all, hdl_18all, ldl_18all, NEUT_18, CREA_20, UA_20, GLU_20]
+    part4: [TP_20, ALB_20, GLB_20, AG_20, AST_20, ALT_20, ASTALT_20, TBA_20, TBIL_20,
+            DBIL_20, IBIL_20, ALP_20, GGT_20, UREA_20, HCY_20, APOAI_20, APOB_20, AIB_20]
+    part1_old: [AGE‘, gender]
+    part2_old: [dbp_08, sbp_08, drinkcar, smokecar, phycar, BMI08, wc_08, hc_08]
+    part3_old: [tc_08all, tg_08all, hdl_08all, ldl_08all, NEUT_08, cr_08, ua_08, fbg_08]
+
+training:
+  batch_size: 8
+  num_workers: 4
+  epochs: 100
+  n_splits: 5
+  target_folds: null       # null = all folds; or [0, 1, 2, 3, 4]
+  random_state: 42
+  drop_last: true
+  aux_loss_weight: 0.2
+  lr_high: 0.001
+  lr_low: 0.000001
+  weight_decay: 0.0
+  early_stopping_patience: 5
+  early_stopping_min_delta: 0.0001
+  checkpoint_every: 2
+  plot_every: 0            # 0 disables per-epoch plots; use 1 or 5 for diagnostics
+  save_component_plots: true
+
+model:
+  meta_mid_dim: 128
+  out_dim_per_meta: 16
+  cfp_weight_init: 0.2
+  morph_weight_init: 0.0
+  meta_weight_init: 0.7
+
+pretrained:
+  # Use Python format fields: {data_source}, {target}, {metainfo}, {cfp_type}, {fold}
+  cfp_checkpoint_template: /path/to/CFP_pretrained/kailuan_{target}_{cfp_type}_FLAIR_TemporalConvHead_CFP_Siamese_ResNet34_CBAM_Regression_Brain2WMH_range_128/fold_{fold}/stage2_best.pth
+  cfp_state_key: cfp_model
+  meta_checkpoint_template: /path/to/meta_pretrained/{data_source}_Epochs_200_metainfo_{metainfo}_target_{target}_mid_dim_128_out_dim_per_meta_16/fold_{fold}/highest_pearson.pth
+  meta_state_key: model_state_dict
+
+plot:
+  enabled: true
+  file_format: svg
+  dpi: 300
+  font_family: Arial
+  arcsinh_scale: 5.0
