@@ -52,11 +52,11 @@ To make the dataset more interpretable and reproducible, we provide a visualized
 <table>
   <tr>
     <td align="center">
-      <b>Left eye (CFP)</b><br>
+      <b>Left eye</b><br>
       <img src="Data_demo/ID5_L.jpg" width="320">
     </td>
     <td align="center">
-      <b>Right eye (CFP)</b><br>
+      <b>Right eye</b><br>
       <img src="Data_demo/ID5_R.jpg" width="320">
     </td>
   </tr>
