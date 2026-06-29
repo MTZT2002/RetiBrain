@@ -7,7 +7,7 @@ The refactored code is organized for reproducibility and readability rather than
 ## Repository structure
 
 ```text
-retibrain_fusion_github/
+RetiBrain/
 ├── configs/
 │   └── example_kailuan_fusion.yaml   # editable experiment configuration
 ├── retibrain_fusion/
@@ -25,6 +25,49 @@ retibrain_fusion_github/
 ├── requirements.txt
 └── pyproject.toml
 ```
+
+## Data Demo (retibrain/Data_demo)
+
+To make the dataset more interpretable and reproducible, we provide a visualized example sample.
+
+### Sample ID = 5
+
+**Brain biomarker values (from CSV):**
+
+| ID | WMH | WMH_log1p |
+|----|-----|----------|
+| 5  | 8.07 | 2.204972 |
+
+### Bilateral fundus images
+
+[//]: # (Left eye &#40;CFP&#41;:)
+
+[//]: # (![Left Eye]&#40;Data_demo/ID5_L.jpg&#41;)
+
+[//]: # ()
+[//]: # (Right eye &#40;CFP&#41;:)
+
+[//]: # (![Right Eye]&#40;Data_demo/ID5_R.jpg&#41;)
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Left eye (CFP)</b><br>
+      <img src="Data_demo/ID5_L.jpg" width="320">
+    </td>
+    <td align="center">
+      <b>Right eye (CFP)</b><br>
+      <img src="Data_demo/ID5_R.jpg" width="320">
+    </td>
+  </tr>
+</table>
+
+---
+
+### Notes
+- Images correspond to paired CFP inputs used for modeling.
+- WMH represents white matter hyperintensity burden derived from MRI.
+- WMH_log1p is the transformed regression target used during training.
 
 ## Quick start
 
@@ -84,47 +127,3 @@ For each fold, the training script saves:
 - Parameterized morphology feature dimension instead of hard-coding 144.
 - Replaced deprecated `pretrained=False` usage with `weights=None` when available.
 - Avoided validation metadata normalization leakage by applying training-split mean/std to validation.
-
-
----
-
-## Data Demo (retibrain_fusion/Data_demo)
-
-To make the dataset more interpretable and reproducible, we provide a visualized example sample.
-
-### Sample ID = 5
-
-**Brain biomarker values (from CSV):**
-
-| ID | WMH | WMH_log1p |
-|----|-----|----------|
-| 5  | 8.07 | 2.204972 |
-
-### Bilateral fundus images
-
-[//]: # (Left eye &#40;CFP&#41;:)
-
-[//]: # (![Left Eye]&#40;Data_demo/ID5_L.jpg&#41;)
-
-[//]: # ()
-[//]: # (Right eye &#40;CFP&#41;:)
-
-[//]: # (![Right Eye]&#40;Data_demo/ID5_R.jpg&#41;)
-
-<table>
-  <tr>
-    <td align="center">
-      <b>Left eye (CFP)</b><br>
-      <img src="Data_demo/ID5_L.jpg" width="320">
-    </td>
-    <td align="center">
-      <b>Right eye (CFP)</b><br>
-      <img src="Data_demo/ID5_R.jpg" width="320">
-    </td>
-  </tr>
-</table>
-
-### Notes
-- Images correspond to paired CFP inputs used for fusion modeling.
-- WMH represents white matter hyperintensity burden derived from MRI.
-- WMH_log1p is the transformed regression target used during training.
