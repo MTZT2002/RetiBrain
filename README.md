@@ -111,8 +111,6 @@ To make the dataset more interpretable and reproducible, we provide a visualized
 
 [//]: # (![Right Eye]&#40;Data_demo/ID5_R.jpg&#41;)
 
-### Bilateral fundus images
-
 <table>
   <tr>
     <td align="center">
