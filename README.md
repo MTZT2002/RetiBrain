@@ -97,10 +97,6 @@ The dataset expects one row per subject/sample and requires:
 
 DICOM (`.dcm`/`.dicom`) and common image formats are supported.
 
-## Checkpoint reuse
-
-Pretrained CFP and metadata checkpoints are optional. Configure them in the `pretrained` section of the YAML file. The loader only imports parameters whose names and shapes match the current model, which allows new regression/fusion heads to remain randomly initialized.
-
 ## Outputs
 
 For each fold, the training script saves:
