@@ -1,9 +1,5 @@
 # RetiBrain Fusion Training
 
-This repository provides a clean training pipeline for fusing bilateral color fundus photographs (CFP), retinal morphology features, and clinical metadata for continuous brain biomarker regression.
-
-The refactored code is organized for reproducibility and readability rather than as a single experiment notebook/script.
-
 ## Repository structure
 
 ```text
@@ -66,8 +62,6 @@ To make the dataset more interpretable and reproducible, we provide a visualized
 
 ### Notes
 - Images correspond to paired CFP inputs used for modeling.
-- WMH represents white matter hyperintensity burden derived from MRI.
-- WMH_log1p is the transformed regression target used during training.
 
 ## Quick start
 
