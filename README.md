@@ -97,12 +97,6 @@ The dataset expects one row per subject/sample and requires:
 
 DICOM (`.dcm`/`.dicom`) and common image formats are supported.
 
-## Notes on preprocessing
-
-Metadata normalization is fitted on the training split and reused for validation. This avoids validation-set distribution leakage and makes fold-level evaluation easier to reproduce.
-
-If the target is stored as `log1p(value)`, keep `label_transform: log1p` so validation metrics and diagnostic plots are reported on the original scale.
-
 ## Checkpoint reuse
 
 Pretrained CFP and metadata checkpoints are optional. Configure them in the `pretrained` section of the YAML file. The loader only imports parameters whose names and shapes match the current model, which allows new regression/fusion heads to remain randomly initialized.
